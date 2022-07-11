@@ -15,7 +15,6 @@ public class FirstItemProcessor implements ItemProcessor<Student, StudentSQL> {
         student.setFirstName(item.getFirstName());
         student.setLastName(item.getLastName());
         student.setEmail(item.getEmail());
-        student.setDeptId(item.getDeptId());
         student.setIsActive(item.getIsActive() != null ?
                 Boolean.valueOf(item.getIsActive()) : false);
 

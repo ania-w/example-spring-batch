@@ -33,13 +33,20 @@ public class DatabaseConfig {
     }
 
     @Bean
+    @Qualifier("sqlDatasource")
+    @ConfigurationProperties(prefix="spring.sql-datasource")
+    public DataSource sqlDataSource(){
+        return DataSourceBuilder.create().build();
+    }
+
+    @Bean
     @Qualifier("postgresEntityManagerFactory")
     public EntityManagerFactory postgresEntityManagerFactory(){
         LocalContainerEntityManagerFactoryBean lem=
                 new LocalContainerEntityManagerFactoryBean();
 
         lem.setDataSource(universityDataSource());
-        lem.setPackagesToScan("model/Student.java");
+        lem.setPackagesToScan("model");
         lem.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         lem.setPersistenceProviderClass(HibernatePersistenceProvider.class);
         lem.afterPropertiesSet();
@@ -53,7 +60,7 @@ public class DatabaseConfig {
         LocalContainerEntityManagerFactoryBean lem=
                 new LocalContainerEntityManagerFactoryBean();
 
-        lem.setDataSource(dataSource());
+        lem.setDataSource(sqlDataSource());
         lem.setPackagesToScan("model");
         lem.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         lem.setPersistenceProviderClass(HibernatePersistenceProvider.class);

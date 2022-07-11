@@ -20,13 +20,7 @@ public class JobService {
 
     @Autowired
     JobLauncher jobLauncher;
-
     @Autowired
-    @Qualifier("first")
-    Job firstJob;
-
-    @Autowired
-    @Qualifier("second")
     Job secondJob;
 
     @Async
@@ -43,8 +37,8 @@ public class JobService {
         JobParameters jobParameters=new JobParameters(params);
 try {
     JobExecution jobExecution=null;
-    if (jobName.equals("First Job"))
-        jobLauncher.run(firstJob, jobParameters);
+    //if (jobName.equals("First Job"))
+     //   jobLauncher.run(firstJob, jobParameters);
     if (jobName.equals("Second Job"))
         jobLauncher.run(secondJob, jobParameters);
     System.out.println("job execution id: "+jobExecution.getId());

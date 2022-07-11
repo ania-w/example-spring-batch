@@ -1,14 +1,12 @@
 package model;
 
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Student")
+@Table(name="student")
 public class StudentSQL {
     @Id
     private Long id;
@@ -19,10 +17,8 @@ public class StudentSQL {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name="email")
     private String email;
-
-    @Column(name = "dept_id")
-    private Long deptId;
 
     @Column(name = "is_active")
     private Boolean isActive;
@@ -59,13 +55,6 @@ public class StudentSQL {
         this.email = email;
     }
 
-    public Long getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(Long deptId) {
-        this.deptId = deptId;
-    }
 
     public Boolean getIsActive() {
         return isActive;

@@ -22,11 +22,6 @@ public class SecondJobScheduler {
     JobLauncher jobLauncher;
 
     @Autowired
-    @Qualifier("first")
-    Job firstJob;
-
-    @Autowired
-    @Qualifier("second")
     Job secondJob;
 
    // @Scheduled(cron="0 0/1 * 1/1 * ?")

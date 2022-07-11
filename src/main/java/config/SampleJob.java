@@ -83,6 +83,10 @@ public class SampleJob {
     private FirstItemWriter writer;
 
     @Autowired
+    @Qualifier("sqlDatasource")
+    private DataSource sqldataSource;
+
+    @Autowired
     @Qualifier("datasource")
     private DataSource dataSource;
 
@@ -112,23 +116,9 @@ public class SampleJob {
     private JpaTransactionManager jpaTransactionManager;
 
     @Bean
-    @Qualifier("first")
     public Job firstJob()
     {
         return jobBuilderFactory.get("First Job")
-                .incrementer(new RunIdIncrementer())
-                .start(firstStep())
-                .next(secondStep())
-                .listener(firstJobListener)
-                .build();
-
-    }
-
-    @Bean
-    @Qualifier("second")
-    public Job secondJob()
-    {
-        return jobBuilderFactory.get("Second Job")
                 .incrementer(new RunIdIncrementer())
                 .start(firstChunkStep())
                 .listener(firstJobListener)

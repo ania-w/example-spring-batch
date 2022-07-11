@@ -7,9 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="Student")
+@Table(name = "Student")
 public class Student {
 
     @Id
@@ -23,8 +22,6 @@ public class Student {
 
     private String email;
 
-    @Column(name = "dept_id")
-    private Long deptId;
 
     @Column(name = "is_active")
     private String isActive;
@@ -61,14 +58,6 @@ public class Student {
         this.email = email;
     }
 
-    public Long getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(Long deptId) {
-        this.deptId = deptId;
-    }
-
     public String getIsActive() {
         return isActive;
     }
@@ -76,4 +65,5 @@ public class Student {
     public void setIsActive(String isActive) {
         this.isActive = isActive;
     }
+
 }
